@@ -1,0 +1,146 @@
+body {
+  background-color: #ddd;
+  color: #ddd;
+  min-height: 100vh;
+  display: flex;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.note {
+  position: absolute;
+  background-color: rgba(10, 10, 20, 0.9);
+  padding: 10px;
+  width: 100%;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  z-index: 11;
+  transform: translate(-50%, -50%);
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.note p {
+  font-size: 2rem;
+}
+
+.slider-container {
+  position: relative;
+  margin: 0 auto;
+  overflow: hidden;
+  width: 70vw;
+  margin-top: 2rem;
+}
+
+.slider-container > div {
+  overflow: hidden;
+}
+
+.slider {
+  display: grid;
+  grid-template-columns: repeat(6, 100%);
+  transform: translateX(-70vw);
+}
+
+.img img {
+  box-sizing: border-box;
+  padding: 0 2px;
+  max-width: 100%;
+}
+
+.content {
+  position: absolute;
+  z-index: 10;
+  width: 70vw;
+  height: 60px;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 1.2rem;
+  border-radius: 5px;
+  background: rgb(25, 25, 25);
+  cursor: pointer;
+  transition: 0.3s;
+  opacity: 0.5;
+}
+
+.btn:hover {
+  opacity: 1;
+}
+
+#prev,
+#next {
+  border: 2px solid #ddd;
+  font-size: 20px;
+}
+
+#prev {
+  left: 5%;
+}
+
+#next {
+  right: 5%;
+}
+
+#prev::after,
+#next::after {
+  content: "";
+  border: 15px solid;
+  box-sizing: border-box;
+  border-color: white transparent transparent transparent;
+  z-index: 10;
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 4px;
+}
+
+#prev::after {
+  transform: rotate(90deg);
+  left: -5px;
+}
+
+#next::after {
+  transform: rotate(-90deg);
+  right: -5px;
+}
+
+.p {
+  margin: 20px;
+}
+
+@media only screen and (max-width: 992px) {
+  .slider-container {
+    width: 90vw;
+  }
+  .slider {
+    transform: translateX(-90vw);
+  }
+  .content {
+    width: 90vw;
+  }
+}
+
+.move {
+  animation-name: moving;
+  animation-iteration-count: infinite;
+  animation-duration: 5s;
+  animation-timing-function: linear;
+}
+
+@keyframes moving {
+  50% {
+    left: 53%;
+  }
+}
